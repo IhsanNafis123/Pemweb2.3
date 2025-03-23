@@ -3,30 +3,35 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/produk', function () {
-    return 'Daftar semua produk';
-});
-
-Route::get('/detail-produk', function () {
-    return "Detail produk dengan ID:";
-});
-
-Route::get('/keranjang', function () {
-    return 'Produk berhasil ditambahkan ke keranjang';
-});
-
-Route::get('/cart', function () {
-    return 'Isi keranjang belanja Anda';
-});
-
-Route::get('/checkout', function () {
-    return 'Checkout berhasil';
-});
-
-
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    $title = 'Homepage - Toko Kami';
+    return view('web.homepage', ['title'=>$title]);
+});
+
+
+Route::get('/products', function(){
+    return view('web.products');
+   });
+   Route::get('/product/{slug}', function($slug){
+    return view('web.single_products');
+   });
+   Route::get('/categories', function(){
+    return view('web.categories');
+   });
+   Route::get('/category/{slug}', function($slug){
+    return view('web.single_category');
+   });
+   Route::get('/cart', function(){
+    return view('web.cart');
+   });
+   Route::get('/checkout', function(){
+    return view('web.checkout');
+   });
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
