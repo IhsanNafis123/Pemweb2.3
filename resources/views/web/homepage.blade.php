@@ -41,8 +41,24 @@
         </div>
     </div>
 
-    <x-alert type="success" title="Berhasil!">
-        Selamat, data berhasil dimuat!
-    </x-alert>
+    <div>
+    <button type="button" class="btn btn-primary" id="liveAlertBtn">
+        {{ $pesan ?? 'Tampilkan Alert' }}
+    </button>
+    <div id="liveAlertPlaceholder"></div>
+</div>
+
+<script>
+    document.getElementById("liveAlertBtn").addEventListener("click", function() {
+        let alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+        alertPlaceholder.innerHTML = `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                PENGUMUMAN: Website ini sedang dalam perbaikan. Mohon maaf atas ketidaknyamanannya.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    });
+</script>
+
     
 </x-layout>
